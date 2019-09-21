@@ -26,9 +26,23 @@ Security scheme required for API console.
 Security schemes: https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md#security-schemes
 
 
+## Flow
+
+1. Client contacts Mule OAuth Provider (MOAP) to retrieve the token (/authorize, /access_token)
+2. Client calls the resource
+3. Proxy intercepts the call and validate the token (/validate)
+4. Validated token is cached
+5. Resource is available to the client
+
+
 ## Client 
 
 OAuth client module: https://docs.mulesoft.com/connectors/oauth/oauth-documentation
+
+## Reference
+
+RFC 6749: The OAuth 2.0 Authorization Framework
+https://tools.ietf.org/html/rfc6749
 
 
 ## Examples
