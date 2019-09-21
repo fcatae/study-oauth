@@ -11,3 +11,12 @@ GET http://hyper-echo-api.us-e2.cloudhub.io/api/ping
 
 ###
 GET http://localhost:8081/ping
+
+###
+GET http://localhost:8081/authorize?response_type=code&client_id=clientId1&redirect_uri=http%3A%2F%2Flocalhost:8081%2Fcallback&scope=USER
+
+###
+GET http://localhost:8081/authorize?response_type=code&client_id=clientId1&redirect_uri=http%3A%2F%2Flocalhost%2Fcallback&scope=read
+
+###
+GET http://localhost:8081/validate
