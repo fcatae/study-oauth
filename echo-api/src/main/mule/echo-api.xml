@@ -127,7 +127,7 @@ output application/json
         <logger level="INFO" doc:name="Logger" doc:id="bbc11bd8-ad34-418a-808d-c53256bbb96b" />
     </flow>
     <flow name="get:\ping:echo-api-config">
-        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd" doc:id="c037b7d2-c57e-4e10-9439-9f20c8950a68">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/json

@@ -1,5 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+      xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:oauth2-provider="http://www.mulesoft.org/schema/mule/oauth2-provider"
+      xmlns:http="http://www.mulesoft.org/schema/mule/http" xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/oauth2-provider http://www.mulesoft.org/schema/mule/oauth2-provider/current/mule-oauth2-provider.xsd
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+    <http:listener-config name="listenerConfig">
+        <http:listener-connection host="localhost"
+                                  port="8081"/>
+    </http:listener-config>
+
+    <oauth2-provider:config name="OAuth2Provider"
+                            providerName="Test OAuth2Provider"
+                            resourceOwnerSecurityProvider="resourceOwnerSecurityProvider"
+                            clientSecurityProvider="clientSecurityProvider"
+                            supportedGrantTypes="${allSupportedGrantTypes}"
+                            listenerConfig="listenerConfig"
+                            clientStore="clientObjectStore"
+                            scopes="GUEST,USER,ADMIN"
+                            defaultScopes="USER"
+                            supportedGrantTypes="${allSupportedGrantTypes}">
+        <oauth2-provider:client-validation-rate-limiter>
+            <oauth2-provider:period-rate-limiter/>
+        </oauth2-provider:client-validation-rate-limiter>
+        <oauth2-provider:token-config path="/token"
+                                      tokenStore="tokenObjectStore"
+                                      tokenTtl="86400"
+                                      tokenTtlTimeUnit="SECONDS">
+            <oauth2-provider:refresh-token-strategy>
+                <oauth2-provider:multiple-refresh-tokens/>
+            </oauth2-provider:refresh-token-strategy>
+        </oauth2-provider:token-config>
+        <oauth2-provider:authorization-config loginPage="static/auth.html"
+                                              path="/authorize"
+                                              authorizationCodeStore="authorizationCodeObjectStore"/>
+        <oauth2-provider:clients>
+            <oauth2-provider:client clientId="clientId1"
+                                    secret="clientSecret1"
+                                    principal="clusr"
+                                    type="CONFIDENTIAL">
+                <oauth2-provider:client-redirect-uris>
+                    <oauth2-provider:client-redirect-uri>
+                        http://fake/redirect
+                    </oauth2-provider:client-redirect-uri>
+                </oauth2-provider:client-redirect-uris>
+                <oauth2-provider:client-authorized-grant-types>
+                    <oauth2-provider:client-authorized-grant-type>
+                        AUTHORIZATION_CODE
+                    </oauth2-provider:client-authorized-grant-type>
+                </oauth2-provider:client-authorized-grant-types>
+            </oauth2-provider:client>
+        </oauth2-provider:clients>
+    </oauth2-provider:config>
+
+
+    <flow name="protected-resource-flow">
+        <http:listener path="/protected" config-ref="listenerConfig" doc:name="protected resource"/>
+        <oauth2-provider:validate-token config-ref="OAuth2Provider"/>
+        <flow-ref name="aditionalLogic"/>
+    </flow>
+
+</mule>

@@ -52,6 +52,11 @@ OAuth client module: https://docs.mulesoft.com/connectors/oauth/oauth-documentat
 RFC 6749: The OAuth 2.0 Authorization Framework
 https://tools.ietf.org/html/rfc6749
 
+## Step by step
+
+1. Create an HTTP Listener
+2. Configure HTTP Listener Configuration
+3. Create OAuth2 Provider Configuration
 
 ## Examples
 
