@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="fe2d32ad-28cc-42d9-95ee-60edb83cba71" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="auth-apiFlow" doc:id="04387594-3acc-4ace-a99d-fe8d15a172ae" >
+		<http:listener doc:name="/validate" doc:id="cf9808c4-76e6-4410-8107-db45ac9e5dd1" path="/validate" config-ref="HTTP_Listener_config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="cd2131f1-377f-4cc2-b3ee-c4fa55fb5dc2" message="#[output application/json --- attributes]"/>
+	</flow>
+</mule>
