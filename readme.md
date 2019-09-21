@@ -15,10 +15,23 @@ OAuth 2.0 Provider Module: https://anypoint.mulesoft.com/exchange/com.mulesoft.m
 1. Open Studio and create a Mule project
 2. Search in Exchange for "OAuth Provider Module"
 
-OAuth client module: https://docs.mulesoft.com/connectors/oauth/oauth-documentation
+
+## OAuth Policy Enforcement
+
+Query parameter: ?access_token=123
+Authorization header: Authentication: Bearer 123
+
+Security scheme required for API console.
 
 Security schemes: https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md#security-schemes
 
+
+## Client 
+
+OAuth client module: https://docs.mulesoft.com/connectors/oauth/oauth-documentation
+
+
+## Examples
 
 Example 2: External OAuth 2.0 server for Anypoint Platform
 https://anypoint.mulesoft.com/exchange/org.mule.templates/api-gateway-external-oauth2-provider/
