@@ -1,0 +1,14 @@
+#%RAML 1.0
+title: Echo API
+mediaType:
+  - application/json
+version: v1
+/echo:
+  get:
+    displayName: Echo Client
+    responses:
+      "200":
+        body:
+          example: Example
+          type: string
+securedBy: []
