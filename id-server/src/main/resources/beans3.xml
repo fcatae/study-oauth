@@ -8,9 +8,9 @@
         <ss:authentication-manager id="resourceOwnerAuthenticationManager">
             <ss:authentication-provider>
                 <ss:user-service id="resourceOwnerUserService">
-                    <ss:user name="rousr"
-                             password="ropwd+%"
-                             authorities="RESOURCE_OWNER" />
+                    <ss:user name="teste1"
+                             password="{noop}teste1"
+                             authorities="USER" />
                 </ss:user-service>
             </ss:authentication-provider>
         </ss:authentication-manager>

@@ -35,7 +35,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
             <oauth2-provider:client clientId="clientId1"
                                     secret="clientSecret1"
                                     principal="clusr"
-                                    type="CONFIDENTIAL">
+                                    type="CONFIDENTIAL" clientName="clientApp" description="web application for testing">
                 <oauth2-provider:client-redirect-uris>
 					<oauth2-provider:client-redirect-uri value="http://localhost:8081/callback" />
                 </oauth2-provider:client-redirect-uris>
@@ -45,10 +45,12 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 
     <os:object-store name="clientObjectStore"
                      persistent="true"/>
+                     
     <os:object-store name="authorizationCodeObjectStore"
                      entryTtl="600"
                      entryTtlUnit="SECONDS"
                      persistent="true"/>
+                     
     <os:object-store name="tokenObjectStore"
                      entryTtl="86400"
                      entryTtlUnit="SECONDS"
@@ -68,6 +70,18 @@ output application/json
 {
 	"ok": true
 }]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="id-serverFlow3" doc:id="c8ffd495-0b82-4d5a-98d4-4297153e7343" >
+		<http:listener doc:name="/validate" doc:id="56a58e27-3f53-449f-b8ab-af192c8eb30b" config-ref="listenerConfig" path="/validate"/>
+		<oauth2-provider:validate-token doc:name="Validate token" doc:id="bc3ac99e-6332-426f-9daf-9fcfafe96c2d" config-ref="OAuth2Provider"/>
+		<ee:transform doc:name="Transform Message" doc:id="9f05d031-1b77-4fec-895d-7425b4fed3ae" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</flow>
