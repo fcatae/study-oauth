@@ -34,6 +34,14 @@ Security schemes: https://github.com/raml-org/raml-spec/blob/master/versions/ram
 4. Validated token is cached
 5. Resource is available to the client
 
+## OAuth 2.0 Grant Types
+
+Implicit, Client credentials, Password, Authorization Code
+
+Common: Authorization Code
+
+Implicit: issuer skips the step of generating an intermediate access code
+
 
 ## Client 
 
