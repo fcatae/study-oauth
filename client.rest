@@ -5,3 +5,9 @@ GET http://localhost:8081/api/echo
 ###
 GET http://localhost:8081/api/ping
 
+###
+GET http://hyper-echo-api.us-e2.cloudhub.io/api/ping
+
+
+###
+GET http://localhost:8081/ping

@@ -57,10 +57,12 @@
     </oauth2-provider:config>
 
 
-    <flow name="protected-resource-flow">
-        <http:listener path="/protected" config-ref="listenerConfig" doc:name="protected resource"/>
-        <oauth2-provider:validate-token config-ref="OAuth2Provider"/>
-        <flow-ref name="aditionalLogic"/>
-    </flow>
+    <http:listener-config name="HTTP_Listener_config_8080" doc:name="HTTP Listener config" doc:id="b66c426c-38ac-4b53-a140-e2e115bce4e3" >
+		<http:listener-connection host="0.0.0.0" port="8080" />
+	</http:listener-config>
+	<flow name="id-serverFlow" doc:id="657feae8-315b-4799-83de-c53d5bf80c32" >
+		<http:listener doc:name="Listener" doc:id="c5f93773-9680-4608-8bf8-08158c625769" config-ref="HTTP_Listener_config_8080" path="/ping"/>
+		<logger level="INFO" doc:name="Logger" doc:id="457a942f-b7a6-499c-b9a9-eca9f385b9c8" />
+	</flow>
 
 </mule>
