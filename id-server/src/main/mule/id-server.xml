@@ -16,32 +16,32 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
                                   port="8081"/>
     </http:listener-config>
 
-<!--     <oauth2-provider:config name="OAuth2Provider" -->
-<!--                             providerName="Test OAuth2Provider" -->
-<!--                             resourceOwnerSecurityProvider="resourceOwnerSecurityProvider" -->
-<!--                             clientSecurityProvider="clientSecurityProvider" -->
-<!--                             listenerConfig="listenerConfig" -->
-<!--                             clientStore="clientObjectStore" -->
-<!--                             scopes="GUEST,USER,ADMIN" -->
-<!--                             defaultScopes="USER"> -->
-<!--         <oauth2-provider:token-config tokenStore="tokenObjectStore"> -->
-<!--             <oauth2-provider:refresh-token-strategy> -->
-<!--                 <oauth2-provider:multiple-refresh-tokens/> -->
-<!--             </oauth2-provider:refresh-token-strategy> -->
-<!--         </oauth2-provider:token-config> -->
-<!--         <oauth2-provider:authorization-config loginPage="static/auth.html" -->
-<!--                                               authorizationCodeStore="authorizationCodeObjectStore"/> -->
-<!--         <oauth2-provider:clients> -->
-<!--             <oauth2-provider:client clientId="clientId1" -->
-<!--                                     secret="clientSecret1" -->
-<!--                                     principal="clusr" -->
-<!--                                     type="CONFIDENTIAL"> -->
-<!--                 <oauth2-provider:client-redirect-uris> -->
-<!-- 					<oauth2-provider:client-redirect-uri value="http://localhost/callback" /> -->
-<!--                 </oauth2-provider:client-redirect-uris> -->
-<!--             </oauth2-provider:client> -->
-<!--         </oauth2-provider:clients> -->
-<!--     </oauth2-provider:config> -->
+    <oauth2-provider:config name="OAuth2Provider"
+                            providerName="Test OAuth2Provider"
+                            resourceOwnerSecurityProvider="resourceOwnerSecurityProvider"
+                            clientSecurityProvider="clientSecurityProvider"
+                            listenerConfig="listenerConfig"
+                            clientStore="clientObjectStore"
+                            scopes="GUEST,USER,ADMIN"
+                            defaultScopes="USER">
+        <oauth2-provider:token-config tokenStore="tokenObjectStore">
+            <oauth2-provider:refresh-token-strategy>
+                <oauth2-provider:multiple-refresh-tokens/>
+            </oauth2-provider:refresh-token-strategy>
+        </oauth2-provider:token-config>
+        <oauth2-provider:authorization-config loginPage="static/auth.html"
+                                              authorizationCodeStore="authorizationCodeObjectStore"/>
+        <oauth2-provider:clients>
+            <oauth2-provider:client clientId="clientId1"
+                                    secret="clientSecret1"
+                                    principal="clusr"
+                                    type="CONFIDENTIAL">
+                <oauth2-provider:client-redirect-uris>
+					<oauth2-provider:client-redirect-uri value="http://localhost/callback" />
+                </oauth2-provider:client-redirect-uris>
+            </oauth2-provider:client>
+        </oauth2-provider:clients>
+    </oauth2-provider:config>
 
     <os:object-store name="clientObjectStore"
                      persistent="true"/>
