@@ -37,7 +37,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
                                     principal="clusr"
                                     type="CONFIDENTIAL">
                 <oauth2-provider:client-redirect-uris>
-					<oauth2-provider:client-redirect-uri value="http://localhost/callback" />
+					<oauth2-provider:client-redirect-uri value="http://localhost:8081/callback" />
                 </oauth2-provider:client-redirect-uris>
             </oauth2-provider:client>
         </oauth2-provider:clients>
@@ -70,6 +70,10 @@ output application/json
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
+	</flow>
+	<flow name="id-serverFlow2" doc:id="59c10604-5141-4e6b-b6dd-dbb48bf361fe" >
+		<http:listener doc:name="CALLBACK" doc:id="0138b22a-f106-4851-895a-cca4747a13f7" path="/callback" config-ref="listenerConfig"/>
+		<logger level="INFO" doc:name="Logger" doc:id="dfe70d42-99b4-4237-b82c-ff0152827a19" message="output application/json --- payload"/>
 	</flow>
 	<flow name="id-serverFlow" doc:id="657feae8-315b-4799-83de-c53d5bf80c32" >
 		<http:listener doc:name="Listener" doc:id="c5f93773-9680-4608-8bf8-08158c625769" config-ref="HTTP_Listener_config_8080" path="/ping"/>
