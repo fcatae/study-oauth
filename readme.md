@@ -12,6 +12,7 @@ OAuth 2.0 Provider Module: https://anypoint.mulesoft.com/exchange/com.mulesoft.m
 
 OAuth client module: https://docs.mulesoft.com/connectors/oauth/oauth-documentation
 
+Security schemes: https://github.com/raml-org/raml-spec/blob/master/versions/raml-10/raml-10.md#security-schemes
 
 
 Example OAuth using Box.com
