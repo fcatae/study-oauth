@@ -59,6 +59,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<flow name="id-serverFlow1" doc:id="dbbefa4e-7b71-4430-890d-7259f908d8d3" >
 		<http:listener doc:name="Listener" doc:id="5dcb2059-8565-40a6-bcc2-ffede0882a8f" config-ref="listenerConfig" path="/ping"/>
+		<oauth2-provider:validate-token doc:name="Validate" doc:id="be5ac3c3-bb4f-40c2-afad-e015408ca51e" config-ref="OAuth2Provider" accessToken="#[(attributes.headers['authorization'] default &quot;&quot; splitBy ' ')[1]]"/>
 		<ee:transform doc:name="Transform Message" doc:id="51bdc059-5513-4eb5-bf22-b017bd981f9c" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
